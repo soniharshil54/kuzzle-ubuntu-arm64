@@ -1,22 +1,22 @@
 version: '3.4'
 
 services:
-  nginx:
-    image: nginx:1.19-alpine
-    container_name: kuzzle_nginx
-    depends_on:
-      - kuzzle
-    ports:
-      - '7512:7512'
-    volumes:
-      - ./docker/nginx-dev:/etc/nginx/conf.d
+  # nginx:
+  #   image: nginx:1.19-alpine
+  #   container_name: kuzzle_nginx
+  #   depends_on:
+  #     - kuzzle
+  #   ports:
+  #     - '7512:7512'
+  #   volumes:
+  #     - ./docker/nginx-dev:/etc/nginx/conf.d
 
   kuzzle:
     image: kuzzleio/core-dev:2
     command: sh -c 'chmod 755 /run-dev.sh && /run-dev.sh && kuzzle start'
     container_name: kuzzle_container
     ports:
-      - '17510:7512' # Kuzzle API port
+      - '7512:7512' # Kuzzle API port
       - '1883:1883' # Kuzzle MQTT port
       - '9229:9229' # Debug port
     volumes:
