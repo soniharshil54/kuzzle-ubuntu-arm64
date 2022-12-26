@@ -13,7 +13,8 @@ services:
 
   kuzzle:
     image: kuzzleio/core-dev:2
-    command: sh -c 'chmod 755 /run-dev.sh && /run-dev.sh'
+    entrypoint: sh -c 'docker-entrypoint.sh' && sh -c 'chmod 755 /run-dev.sh && /run-dev.sh'
+    # command: sh -c 'chmod 755 /run-dev.sh && /run-dev.sh'
     container_name: kuzzle_container
     ports:
       - '7512:7512' # Kuzzle API port
