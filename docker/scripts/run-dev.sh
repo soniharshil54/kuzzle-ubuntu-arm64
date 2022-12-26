@@ -36,3 +36,5 @@ npx ergol docker/scripts/start-kuzzle-dev.ts \
   --script-args=--fixtures /fixtures/fixtures.json \
   --script-args=--securities /fixtures/securities.json \
   --script-args=--enable-plugins $ENABLED_PLUGINS
+
+kuzzle start  
