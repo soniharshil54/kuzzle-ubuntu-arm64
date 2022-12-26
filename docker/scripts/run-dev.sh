@@ -2,9 +2,15 @@
 
 set -e
 
+echo "run dev"
+
+echo $WITHOUT_KUZZLE
+
 if [ -n "$WITHOUT_KUZZLE" ]; then
   exit 0
 fi
+
+echo "after WITHOUT_KUZZLE"
 
 if [ -z "$NODE_VERSION" ];
 then
@@ -36,5 +42,3 @@ npx ergol docker/scripts/start-kuzzle-dev.ts \
   --script-args=--fixtures /fixtures/fixtures.json \
   --script-args=--securities /fixtures/securities.json \
   --script-args=--enable-plugins $ENABLED_PLUGINS
-
-kuzzle start  
